@@ -27,9 +27,13 @@ module.exports = function(config) {
     reporters: ['progress', 'json-all'],
 
     // the default configuration
-    json-allReporter: {
-      outputDir: '', // results will be saved as $outputDir/$browserName.xml
-    }
+    jsonAllReporter: {
+      outputDir: '', // results will be saved as json-all-results.json
+    },
+
+    plugins: [
+      'karma-json-all-reporter'
+    ]
   });
 };
 ```
