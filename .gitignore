@@ -1,0 +1,8 @@
+*.log
+ bower_components/
+.idea
+ *.bak
+*.swp
+.DS_Store
+node_modules/
+.bowerrc
