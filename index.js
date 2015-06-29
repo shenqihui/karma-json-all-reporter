@@ -1,10 +1,10 @@
-var os = require('os');
+// var os = require('os');
 var path = require('path');
 var fs = require('fs');
 
 
 var JsonAllReporter = function(baseReporterDecorator, config, logger, helper, formatError) {
-  var log = logger.create('reporter.json-all');
+  logger.create('reporter.json-all');
   var reporterConfig = config.jsonAllReporter || {};
   var outputFile = helper.normalizeWinPath(path.resolve(config.basePath, reporterConfig.outputFile || 'json-all-results.json'));
 
@@ -19,7 +19,6 @@ var JsonAllReporter = function(baseReporterDecorator, config, logger, helper, fo
     suites[browser.id][type] = suites[browser.id][type] || [];
     suites[browser.id][type].push(value);
   }
-
 
   this.onRunStart = function(browsers) {
     // debugger;
@@ -45,6 +44,7 @@ var JsonAllReporter = function(baseReporterDecorator, config, logger, helper, fo
 
   this.onSpecComplete = function (browser, result) {
     // debugger;
+    buildSuite(browser, 'spec', result);
   };
 
   this.onRunComplete = function() {
@@ -52,13 +52,22 @@ var JsonAllReporter = function(baseReporterDecorator, config, logger, helper, fo
     console.log(suites);
     var writeStr = JSON.stringify(suites, null, 4);
     var fd = fs.openSync(outputFile, 'w+');
-    fs.writeSync(fd, writeStr, 0, "utf8");
-    fs.closeSync(fd);
-    suites = {}
+    fs.write(fd, writeStr, 0, 'utf8', function() {
+      fs.close(fd);
+    });
+    suites = {};
   };
 
-  this.specSuccess = this.specSkipped = this.specFailure = function(browser, result) {
-    // debugger;
+  this.specSuccess = function(browser, result) {
+    buildSuite(browser, 'spec_success', result);
+  };
+
+  this.specSkipped = function(browser, result) {
+    buildSuite(browser, 'spec_skipped', result);
+  };
+
+  this.specFailure = function(browser, result) {
+    buildSuite(browser, 'spec_failure', result);
   };
 
   this.onExit = function(done) {
