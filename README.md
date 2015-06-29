@@ -1,6 +1,6 @@
 # karma-json-all-reporter
 
-> Reporter for the JUnit XML format.
+> Reporter for the JSON format.
 
 ## Installation
 
