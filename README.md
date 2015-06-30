@@ -57,4 +57,8 @@ For more information on Karma see the [homepage].
 
 ### v0.1.0
 
+1、 fix readme and package bug.
+
+### v0.1.0
+
 1、基础功能实现，输出了 error 和 log 。
