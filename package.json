@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/karma-runner/karma-json-all-reporter.git"
+    "url": "git://github.com/shenqihui/karma-json-all-reporter.git"
   },
   "keywords": [
     "karma-plugin",
@@ -17,17 +17,17 @@
     "json-all"
   ],
   "author": "shenqihui <shenqihui0920@gmail.com>",
-  "dependencies": {
-    
-  },
+  "dependencies": {},
   "peerDependencies": {
     "karma": ">=0.9"
   },
   "license": "MIT",
-  "devDependencies": {
-    
-  },
+  "devDependencies": {},
   "contributors": [
     "shenqihui <shenqihui0920@gmail.com>"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/shenqihui/karma-json-all-reporter/issues"
+  },
+  "homepage": "https://github.com/shenqihui/karma-json-all-reporter#readme"
 }
