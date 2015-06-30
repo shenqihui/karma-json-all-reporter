@@ -49,3 +49,12 @@ For more information on Karma see the [homepage].
 
 
 [homepage]: http://karma-runner.github.com
+
+
+----
+
+## Version
+
+### v0.1.0
+
+1、基础功能实现，输出了 error 和 log 。
