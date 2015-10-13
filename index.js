@@ -13,7 +13,7 @@ var JsonAllReporter = function(baseReporterDecorator, config, logger, helper, fo
   function buildSuite(browser, type, value) {
     // debugger;
     suites[browser.id] = suites[browser.id] || {};
-    suites[browser.id]['id'] = suites[browser.id]['id'] || browser.name || '';
+    suites[browser.id]['id'] = suites[browser.id]['id'] || browser.id || '';
     suites[browser.id]['name'] = suites[browser.id]['name'] || browser.name || '';
     suites[browser.id]['fullname'] = suites[browser.id]['fullname'] || browser.name || '';
     suites[browser.id][type] = suites[browser.id][type] || [];
@@ -49,7 +49,7 @@ var JsonAllReporter = function(baseReporterDecorator, config, logger, helper, fo
 
   this.onRunComplete = function() {
     // debugger;
-    console.log(suites);
+    // console.log(suites);
     var writeStr = JSON.stringify(suites, null, 4);
     var fd = fs.openSync(outputFile, 'w+');
     fs.write(fd, writeStr, 0, 'utf8', function() {
